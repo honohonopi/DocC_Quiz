@@ -1,7 +1,7 @@
 console.log("answer-tracker.js loaded");
 
 document.addEventListener("click", function (event) {
-  const choice = event.target.closest("label.choice.active.disabled");
+  const choice = event.target.closest("label.choice");
   if (!choice) {
     console.log("❌ label.choice が見つかりません");
     return;
