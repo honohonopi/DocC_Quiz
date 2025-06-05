@@ -12,8 +12,8 @@ document.addEventListener("click", function (event) {
     console.log("❌ .quiz が見つかりません");
     return;
   }
-
-  const question = document.querySelector(".title.content")?.innerText.trim() ?? "Unknown question";
+  
+  const question = questionEl?.querySelector(".title.content > p")?.innerText.trim() ?? "Unknown question";
   const answer = choice.innerText.trim();
 
   // 選択された要素に "correct" または "incorrect" クラスが含まれているか
