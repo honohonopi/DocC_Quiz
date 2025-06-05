@@ -1,25 +1,23 @@
 console.log("answer-tracker.js loaded");
 
 document.addEventListener("click", function (event) {
-  console.log("クリックされた要素:", event.target);
-
-  // 選択肢（data-correct 属性を持つ最も近い要素）
-  const choice = event.target.closest("[data-correct]");
+  const choice = event.target.closest("label.choice");
   if (!choice) {
-    console.log("❌ data-correct を持つ選択肢が見つかりません");
+    console.log("❌ label.choice が見つかりません");
     return;
   }
 
-  // 問題全体の親要素
-  const questionEl = choice.closest(".assessment");
+  const questionEl = choice.closest(".quiz"); // .assessment ではなく .quiz に修正
   if (!questionEl) {
-    console.log("❌ .assessment が見つかりません");
+    console.log("❌ .quiz が見つかりません");
     return;
   }
 
   const question = questionEl.querySelector("h2")?.innerText ?? "Unknown question";
   const answer = choice.innerText.trim();
-  const correct = choice.getAttribute("data-correct") === "true";
+
+  // 正誤の判定がHTMLにない場合は「Submit」時に処理する or 不明としてfalse扱い
+  const correct = null; // 正誤不明だが、送信だけはできるようにする
 
   console.log("✅ 送信準備OK:", { question, answer, correct });
 
