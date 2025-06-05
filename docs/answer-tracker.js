@@ -13,7 +13,7 @@ document.addEventListener("click", function (event) {
     return;
   }
 
-  const question = questionEl.querySelector("h2")?.innerText ?? "Unknown question";
+  const question = questionEl.querySelector(".question-content")?.innerText.trim() ?? "Unknown question";
   const answer = choice.innerText.trim();
 
   // 選択された要素に "correct" または "incorrect" クラスが含まれているか
