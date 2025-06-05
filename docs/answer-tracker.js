@@ -24,7 +24,7 @@ document.addEventListener("click", function (event) {
 
   console.log("✅ 送信準備OK:", { question, answer, correct });
 
-  fetch("https://script.google.com/macros/s/AKfycbzZA3aGQjQvANHl2Hh7z98eUoRQf1VK6hcghsLiR2A75cDwtQp44_3NRiBRxpSeBAAq/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzbnLTbinjMT5rYM-YjNHyfoJ0Y2JG7UhfrBIxZ2bGPJFHSTfIZrw5_DEaUTcf4ejBW/exec", {
     method: "POST",
     body: JSON.stringify({ question, answer, correct }),
     headers: {
