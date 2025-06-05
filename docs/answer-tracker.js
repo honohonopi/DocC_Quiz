@@ -7,7 +7,7 @@ document.addEventListener("click", function (event) {
     return;
   }
 
-  const questionEl = choice.closest(".quiz"); // .assessment ではなく .quiz に修正
+  const questionEl = choice.closest(".quiz");
   if (!questionEl) {
     console.log("❌ .quiz が見つかりません");
     return;
@@ -16,8 +16,11 @@ document.addEventListener("click", function (event) {
   const question = questionEl.querySelector("h2")?.innerText ?? "Unknown question";
   const answer = choice.innerText.trim();
 
-  // 正誤の判定がHTMLにない場合は「Submit」時に処理する or 不明としてfalse扱い
-  const correct = null; // 正誤不明だが、送信だけはできるようにする
+  // 選択された要素に "correct" または "incorrect" クラスが含まれているか
+  const correct =
+    choice.classList.contains("correct") ? true :
+    choice.classList.contains("incorrect") ? false :
+    null;
 
   console.log("✅ 送信準備OK:", { question, answer, correct });
 
