@@ -3,16 +3,17 @@ console.log("answer-tracker.js loaded");
 document.addEventListener("click", function (event) {
   console.log("クリックされた要素:", event.target);
 
-  // 選択肢の li 要素を取得（data-correct 属性が目印）
-  const choice = event.target.closest("li[data-correct]");
+  // 選択肢（data-correct 属性を持つ最も近い要素）
+  const choice = event.target.closest("[data-correct]");
   if (!choice) {
-    console.log("❌ 選択肢が見つかりません");
+    console.log("❌ data-correct を持つ選択肢が見つかりません");
     return;
   }
 
+  // 問題全体の親要素
   const questionEl = choice.closest(".assessment");
   if (!questionEl) {
-    console.log("❌ 問題要素 (.assessment) が見つかりません");
+    console.log("❌ .assessment が見つかりません");
     return;
   }
 
