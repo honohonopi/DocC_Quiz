@@ -41,7 +41,7 @@ document.addEventListener("click", function (event) {
 function sendViaForm(question, answer, correct) {
   const form = document.createElement('form');
   form.method = 'POST';
-  form.action = 'https://script.google.com/macros/s/AKfycbyAhsEUSnstTwXTzOH2UTGxkg6Ydikz-Npr_Qi-VaUGhAlp2nDqWawnxt4_J6PJpUMG/exec';
+  form.action = 'https://script.google.com/macros/s/AKfycbyDDvFIXyIIhAR0Df1LTtkxtAimh3MEFZmofvWBbTqJedYkJ4nNgKG1nnVFwZvbh7nV/exec';
 
   // 各データをhiddenフィールドとして追加
   const addInput = (name, value) => {
