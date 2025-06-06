@@ -12,7 +12,6 @@ document.addEventListener("click", function (event) {
     console.log("❌ .quiz が見つかりません");
     return;
   }
-
   const question = questionEl?.querySelector(".title.content > p")?.innerText.trim() ?? "Unknown question";
   const answer = choice.innerText.trim();
 
@@ -24,7 +23,7 @@ document.addEventListener("click", function (event) {
 
   console.log("✅ 送信準備OK:", { question, answer, correct });
 
-  fetch("https://script.google.com/macros/s/AKfycbxJF8aRXNj3DQAM_NtCtNtVsKeBHXGeT0TlTEUVGtuUtw-HZ5fIW8K3AsGfrEZXUTQo/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzbnLTbinjMT5rYM-YjNHyfoJ0Y2JG7UhfrBIxZ2bGPJFHSTfIZrw5_DEaUTcf4ejBW/exec", {
     method: "POST",
     body: JSON.stringify({ question, answer, correct }),
     headers: {
