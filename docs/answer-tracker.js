@@ -42,6 +42,7 @@ function sendViaForm(question, answer, correct) {
   const form = document.createElement('form');
   form.method = 'POST';
   form.action = 'https://script.google.com/macros/s/AKfycbyDDvFIXyIIhAR0Df1LTtkxtAimh3MEFZmofvWBbTqJedYkJ4nNgKG1nnVFwZvbh7nV/exec';
+  form.target = "_blank";
 
   // 各データをhiddenフィールドとして追加
   const addInput = (name, value) => {
@@ -61,3 +62,4 @@ function sendViaForm(question, answer, correct) {
   document.body.appendChild(form);
   form.submit();
 }
+
