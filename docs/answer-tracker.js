@@ -39,27 +39,37 @@ document.addEventListener("click", function (event) {
 
 // CORSを回避してGASにデータ送信する関数
 function sendViaForm(question, answer, correct) {
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://script.google.com/macros/s/AKfycbyDDvFIXyIIhAR0Df1LTtkxtAimh3MEFZmofvWBbTqJedYkJ4nNgKG1nnVFwZvbh7nV/exec';
-  form.target = "_blank";
+  // 1. 非表示 iframe を作る（1回だけ作られるようにする）
+  let iframe = document.getElementById("submission-target");
+  if (!iframe) {
+    iframe = document.createElement("iframe");
+    iframe.name = "submission-target";
+    iframe.id = "submission-target";
+    iframe.style.display = "none";
+    document.body.appendChild(iframe);
+  }
 
-  // 各データをhiddenフィールドとして追加
+  // 2. フォームを作成
+  const form = document.createElement("form");
+  form.method = "POST";
+  form.action = "https://script.google.com/macros/s/AKfycbyDDvFIXyIIhAR0Df1LTtkxtAimh3MEFZmofvWBbTqJedYkJ4nNgKG1nnVFwZvbh7nV/exec";
+  form.target = "submission-target"; // ← 遷移先を iframe に！
+
+  // 3. hidden フィールド追加
   const addInput = (name, value) => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
+    const input = document.createElement("input");
+    input.type = "hidden";
     input.name = name;
     input.value = value;
     form.appendChild(input);
   };
+  addInput("question", question);
+  addInput("answer", answer);
+  addInput("correct", correct);
 
-  addInput('question', question);
-  addInput('answer', answer);
-  addInput('correct', correct);
-
-  // ページ遷移を避けたい場合は target="_blank" をつけてもよい
-  form.style.display = 'none';
+  form.style.display = "none";
   document.body.appendChild(form);
   form.submit();
 }
+
 
