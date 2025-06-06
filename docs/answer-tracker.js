@@ -2,7 +2,7 @@ console.log("answer-tracker.js loaded");
 
 // Submitボタンが押されたときの処理
 document.addEventListener("click", function (event) {
-  const submitBtn = event.target.closest("button[type='submit']");
+  const submitBtn = event.target.closest("button.button-cta.check");
   if (!submitBtn) return;
 
   // 対応するクイズ全体を取得
